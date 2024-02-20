@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" class="u-responsive-xl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>BBDayCountDown</title>
+    <script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+  <p id="cntdown"></p>
+</body>
+<script>
+  var bbmonth = 5, bbday = 6;
+  window.onload = function(){
+    setInterval("show()", 1000);
+  }
+  function showdiff(s1, s2){
+    let leftTime = s2.getTime()-s1.getTime();
+    let d,h,m,s;
+    if (leftTime>=0) {
+        d = Math.floor(leftTime/1000/60/60/24);
+        h = Math.floor(leftTime/1000/60/60%24);
+        m = Math.floor(leftTime/1000/60%60);
+        s = Math.floor(leftTime/1000%60);
+        $("#cntdown").html(d + "d " + h + "h " + m + "m " + s + "s to KangKang's BBDay!")
+    } else $("#cntdown").html("BBDay reached!");
+  }
+  function show(){
+    let bbmonthid = bbmonth - 1;
+    let crdate = new Date();
+    let bbyear = crdate.getFullYear();
+    if (crdate.getMonth() == bbmonthid){
+      if (crdate.getDate() == bbday){
+        $("#cntdown").html("BBDay reached!");
+        return;
+      }
+    }
+    let testd = new Date(bbyear+"/"+bbmonth+"/"+bbday+" 00:00:00");
+    if(testd.getTime() < crdate.getTime()){
+      testd = new Date((bbyear+1)+"/"+bbmonth+"/"+bbday+" 00:00:00");
+    }
+    showdiff(crdate, testd);
+  }
+</script>
+</html>
