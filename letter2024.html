@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Letter 2024</title>
+<style>
+    body{
+        padding: 0%;
+        margin: 0%;
+    }
+    .box{
+        width: 100%;
+        height: 100%;
+        background-color: #66ccff;
+        background-size: cover;
+        position: absolute;
+        overflow: hidden;
+    }
+    .content{
+        height: 80%;
+        width: 80%;
+        background: white;
+        position: absolute;
+        left: 10%;
+        top: 10%;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    .content::before{
+        content: '';
+        position: absolute;
+        top:0;right:0;bottom:0;left:0;
+        filter: blur(3px);
+        margin:-5%;
+        background-color: #66ccff;
+        background-size: cover;
+        opacity: .8;
+    }
+    .content p{
+        padding: 5% 5%;
+        color: #ff66cc;
+        font-size: 14px;
+        line-height: 28px;
+        letter-spacing: 1px;
+        filter: blur(0);
+    }
+</style>
+</head>
+<body>
+    <div class="box">
+        <div class="content" id="contents">
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function start(){
+        let str = '康康宝，今天是我们相爱的第91天，虽然绝对时间不长，但总感觉已经在一起很久了。' +
+                  '很抱歉今年没办法跟你一起过你的生日，我也不知道当你找到或者读到这封信时是早上/中午或者晚上，' +
+                  '或者你没能读到这封信，也不知道当你发现这封信时你在做什么，我在做什么，所以很难去渲染什么意境，' +
+                  '但总之，我祝你生日快乐。<br /><br />我不曾想象过跟一个像你这样的女孩在一起是什么样的感觉，' +
+                  '因为我觉得理性无法和少女心兼得，活泼可爱无法和做事认真兼得......而你的个性巧妙地将这些我喜欢但似乎矛盾的' +
+                  '特质融合起来了，让我觉得为什么世界上会有一个如此契合我的人存在，为什么我没能早点遇见你。<br /><br />' +
+                  '我真的很爱你啊。<br /><br />' +
+                  '我们会一起做很多事情，去很多地方，吃很多美食。想到就很开心。<br /><br />' +
+                  '也许激情终会褪去，但愿我们的感情能永远像今天一样纯粹。人生之路道阻且长，但愿我们出走半生，归来少年。';
+        let str_ = ''
+        let i = 0
+        let content = document.getElementById('contents')
+        let timer = setInterval(()=>{
+            if(str_.length<str.length){
+                if(str[i] == '<'){
+                    // br/
+                    str_ += str.substring(i, i+6);
+                    i+=6;
+                } else str_ += str[i++];
+                content.innerHTML = '<p>'+str_+'_</p>'
+            }else{
+                clearInterval(timer)
+                content.innerHTML = '<p>'+str_+'</p>'
+            }
+        }, 100)
+    }
+    start()
+</script>

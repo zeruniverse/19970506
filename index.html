@@ -23,7 +23,7 @@
         m = Math.floor(leftTime/1000/60%60);
         s = Math.floor(leftTime/1000%60);
         $("#cntdown").html(d + "d " + h + "h " + m + "m " + s + "s to KangKang's BBDay!")
-    } else $("#cntdown").html("BBDay reached!");
+    } else $("#cntdown").html('BBDay reached! <a href="letter2024.html" target="_blank">READ Letter</a>');
   }
   function show(){
     let bbmonthid = bbmonth - 1;
@@ -31,7 +31,7 @@
     let bbyear = crdate.getFullYear();
     if (crdate.getMonth() == bbmonthid){
       if (crdate.getDate() == bbday){
-        $("#cntdown").html("BBDay reached!");
+        $("#cntdown").html('BBDay reached! <a href="letter2024.html" target="_blank">READ Letter</a>');
         return;
       }
     }
